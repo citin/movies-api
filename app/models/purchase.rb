@@ -8,13 +8,11 @@ class Purchase < ApplicationRecord
     remaining_time > 0
   end
 
-  private
-
-  # in minutes
-  # if is expired return 0
   def remaining_time
-    [(expire_date - Time.now).to_i / 1.minute, 0].max
+    remaining_minutes = [(expire_date - Time.now).to_i / 1.minute, 0].max
   end
+
+  private
 
   def expire_date
     (self.created_at + 2.days)
