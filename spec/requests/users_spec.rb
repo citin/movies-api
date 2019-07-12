@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Users API', type: :request do
 
+  let(:user) { create(:user_with_purchases) }
+
   # Test suit for GET /api/v1/users/:id/purchases
   describe 'GET /api/v1/users/:id/purchases' do
-    let(:user) { create(:user_with_purchases) }
 
     before { get "/api/v1/users/#{user.id}/purchases" }
 
