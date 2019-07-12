@@ -29,6 +29,7 @@ Define and implement the following JSON REST API in Ruby:
  4. An endpoint for a user to perform a purchase of a content.
 
   ```
+params: { "purchase_option_id": 2 }
 /api/v1/users/:id/purchase
  ```
 
@@ -36,7 +37,6 @@ Define and implement the following JSON REST API in Ruby:
 
  ```
 /api/v1/users/:id/purchases  
-params: { "purchase_option_id": 2 }
  ```
 
 # Installation
