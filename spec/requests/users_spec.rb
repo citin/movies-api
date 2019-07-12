@@ -22,4 +22,28 @@ end
 
 # Test suit for POST /api/v1/users/:id/purchase
 describe 'POST /api/v1/users/:id/purchase' do
+
+  let(:user) { create(:user) }
+  let(:purchase_option) { create(:purchase_option_movie_hd) }
+
+  before do 
+    post "/api/v1/users/#{user.id}/purchase",
+      params: { purchase_option_id: purchase_option.id }
+  end
+
+  it 'returns status code 200' do
+    expect(response).to have_http_status(200)
+  end
+
+  it "adds element in user's library" do
+    expect(user.library.count).to eq(1)
+  end
+
+  it "return error if is already purchased" do
+    post "/api/v1/users/#{user.id}/purchase",
+      params: { purchase_option_id: purchase_option.id }
+
+      expect(response).to have_http_status(405)
+      expect(json["error"]).to include("AlreadyPurchasedError")
+  end
 end
