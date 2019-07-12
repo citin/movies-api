@@ -5,12 +5,10 @@ class User < ApplicationRecord
   has_many :purchases
 
   def library
-    self.purchases.select {|p| p.alive? }
+    self.purchases.select {|p| p.alive? }.sort_by(&:remaining_time)
   end
 
   def purchase(purchase_option)
-    # todo: remove content assoc from Purchase
-    #       check if content is already purchased
     if is_in_library?(purchase_option.content)
       raise AlreadyPurchasedError
     else
