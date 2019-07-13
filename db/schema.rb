@@ -31,23 +31,18 @@ ActiveRecord::Schema.define(version: 2019_07_06_162714) do
   create_table "purchase_options", force: :cascade do |t|
     t.float "price"
     t.string "video_quality"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "content_type"
     t.integer "content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["content_type", "content_id"], name: "index_purchase_options_on_content_type_and_content_id"
   end
 
   create_table "purchases", force: :cascade do |t|
     t.integer "user_id"
-    t.string "content_type"
-    t.integer "content_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "purchase_id"
     t.integer "purchase_option_id"
-    t.index ["content_type", "content_id"], name: "index_purchases_on_content_type_and_content_id"
-    t.index ["purchase_id"], name: "index_purchases_on_purchase_id"
     t.index ["purchase_option_id"], name: "index_purchases_on_purchase_option_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
@@ -55,10 +50,8 @@ ActiveRecord::Schema.define(version: 2019_07_06_162714) do
   create_table "seasons", force: :cascade do |t|
     t.string "title"
     t.text "plot"
-    t.integer "episodes_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["episodes_id"], name: "index_seasons_on_episodes_id"
   end
 
   create_table "users", force: :cascade do |t|
