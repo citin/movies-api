@@ -16,10 +16,10 @@ RSpec.describe Purchase, type: :model do
   end
 
   it "remaining time is approximately 2880 minutes (2 days)" do
-    expect(purchase.remaining_time).to be_within(2878).of(2880)
+    expect(purchase.remaining_time_in_minutes).to be_within(2878).of(2880)
   end
 
   it "remaining time is zero minutes after two days" do
-    expect(old_purchase.remaining_time).to eq(0)
+    expect(old_purchase.remaining_time_in_minutes).to eq(0)
   end
 end

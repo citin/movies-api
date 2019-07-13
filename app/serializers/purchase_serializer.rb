@@ -1,6 +1,6 @@
 class PurchaseSerializer < ActiveModel::Serializer 
 # content {title, remaining_time, price, quality}
-  attributes :title, :remaining_time, :price, :video_quality
+  attributes :title, :remaining_time_in_minutes, :price, :video_quality
 
   def title 
     object.content.title

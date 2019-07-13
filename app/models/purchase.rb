@@ -5,11 +5,11 @@ class Purchase < ApplicationRecord
   delegate :content, to: :purchase_option
 
   def alive?
-    remaining_time > 0
+    remaining_time_in_minutes > 0
   end
 
-  def remaining_time
-    remaining_minutes = [(expire_date - Time.now).to_i / 1.minute, 0].max
+  def remaining_time_in_minutes
+    [(expire_date - Time.now).to_i / 1.minute, 0].max
   end
 
   private

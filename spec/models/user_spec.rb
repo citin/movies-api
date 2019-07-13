@@ -23,6 +23,6 @@ RSpec.describe User, type: :model do
   it "library is ordered by purchase's remaining time" do
     user.purchases.last.update(created_at: 1.day.ago)
 
-    expect(user.library.sorted_by?(&:remaining_time)).to eq(true)
+    expect(user.library.sorted_by?(&:remaining_time_in_minutes)).to eq(true)
   end
 end
