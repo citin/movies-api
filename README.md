@@ -47,14 +47,14 @@ params: { "purchase_option_id": 2 }
  bundle install
 ```
 
-- Setup database
+- Setup database:
 
  ```
  rails db:setup
  rails db:migrate
 ```
 
-- Run local server
+- Run local server:
 
  ```
  rails server
@@ -63,9 +63,25 @@ params: { "purchase_option_id": 2 }
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+# UML Diagram
+
++----+   +--------+   +--------------+
+|User+---+Purchase+---+PurchaseOption|
++----+   +--------+   +-------+------+
+                              |
+                              | content
+                              |
+                         +----+-----+
+                         |          |
+         +-------+   +---+--+    +-----+
+         |Episode+---+Season|    |Movie|
+         +-------+   +---+--+    +-----+
 
 # ToDo
 
 - Add validations
+- Add tests to [movies|seasons|movies_and_seasons] controllers
 - Add pagination on json responses
 - Add caching
+- Add seeds for 
+- Add serializer 'fast_jsonapi'
