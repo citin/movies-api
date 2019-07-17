@@ -9,7 +9,7 @@ class Api::V1::UsersController < ApplicationController
   # Params: { "purchase_option_id": 1 }
   def purchase
     raise AlreadyPurchasedError if @user.is_in_library?(@purchase_option.content)
-    Purchase.create(user: @user, purchase_option: @purchase_option)
+    @user.purchases << Purchase.create(purchase_option: @purchase_option)
     render json: @user.library
   end
 
