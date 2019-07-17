@@ -36,7 +36,7 @@ describe 'POST /api/v1/users/:id/purchase' do
   end
 
   it "adds element in user's library" do
-    expect(json["data"].count).to eq(1)
+    expect(json["data"].count).to eq(user.library.count)
   end
 
   it "return error if is already purchased" do
